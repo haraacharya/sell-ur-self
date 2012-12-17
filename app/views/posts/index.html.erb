@@ -2,6 +2,11 @@
 
 <ul style="list-style: none;">
 <% @posts.each do |post| %>
-	<h3><li><%= link_to post.title, post.url %></li></h3>
+	<li>
+		<%= link_to post.title, post.url %> (<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)
+	</li>
+
 <% end %>
+
 </ul>
+
