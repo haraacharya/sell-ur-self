@@ -1,0 +1,11 @@
+<h2><%= link_to "SELL-UR-SELF!", root_path %></h2>
+
+<h4>Submit your work here</h4>
+
+<%= form_for @post do |f| %>
+	<%= f.label :Describe, "DESCRIBE" %>
+	<%= f.text_area :title, rows: 5 %>
+	<%= f.label :url, "URL" %>
+	<%= f.text_field :url %> <br/>
+	<%= f.submit "Submit-your-work!" %>
+<% end %>	

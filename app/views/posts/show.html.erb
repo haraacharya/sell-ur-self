@@ -1,13 +1,25 @@
-<h2>Show Post</h2>
+<h2><%= link_to "SELL-UR-SELF!", root_path %></h2>
+
+<h4>Show Post!</h4>
 <p><%= link_to @post.title, @post.url %> </p>
 <p> <%= pluralize(@post.comments.count, "Comment") %></p>
+
 <ul>
-	
 	<% @post.comments.each do |comment| %>
-	<li>
-		<%= comment.content %>		
-	</li>
+		<li>
+			<%= comment.content %>		
+		</li>
 	<% end %>
 </ul>
 
-<%= link_to "Home", root_path() %>
+<h4>Submit a Comment!</h4>
+
+<%= form_for [@post, @comment] do |f| %>
+	<%= f.label :content, "CONTENT" %>
+	<%= f.text_area :content, rows: 5 %>	
+	<br/>
+	<%= f.submit "Submit Your Comment!" %>
+<% end %>	
+
+
+<%= link_to "Home", root_path %>

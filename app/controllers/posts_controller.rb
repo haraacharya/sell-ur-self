@@ -5,6 +5,17 @@ class PostsController < ApplicationController
 	end	
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.where(slug: params[:id]).first
+		@comments = @post.comments
+		@comment = Comment.new
+	end
+
+	def new
+		@post = Post.new
+	end
+
+	def create
+		Post.create(params[:post])
+		redirect_to root_path	
 	end
 end	
