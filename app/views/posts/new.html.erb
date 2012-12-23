@@ -2,10 +2,10 @@
 
 <h4>Submit your work here</h4>
 
-<%= form_tag({:controller => "posts", :action => "create"}, :method => "post") do %>
+<%= form_tag posts_path do %>
 	<%= label_tag :Describe, "DESCRIBE" %>
-	<%= text_area_tag :title, params[:title] %>
+	<%= text_area_tag "post[title]" %>
 	<%= label_tag :url, "URL" %>
-	<%= text_field_tag :url, params[:url] %> <br/>
+	<%= text_field_tag "post[url]" %> <br/>
 	<%= submit_tag "Submit-your-work!" %>
 <% end %>	
