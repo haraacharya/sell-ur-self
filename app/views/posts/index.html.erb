@@ -1,12 +1,31 @@
-<h2><%= link_to "SELL-UR-SELF!", root_path %></h2>
-
-
 <h4> <%= link_to "Submit your profile here", new_post_path %></h4>
 <ul style="list-style: none;">
 <% @posts.each do |post| %>
-	<li>
-		<%= link_to post.title, post.url %> 
-		(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)
+	<li class="posts">
+		<div class="post_left">
+			<div class="price_up">
+				<%= link_to post_votes_path(post, price: "up"), :method => "post" do %>
+					<i class="icon-plus-sign"></i>
+				<% end %>		
+			</div>
+
+			<div class="price_show">
+				<%= post.votes_count %> $
+			</div>	
+			
+			<div class="price_down">
+				<%= link_to post_votes_path(post, price: "down"), :method => "post" do %>
+					<i class="icon-minus-sign"></i>
+				<% end %>	
+			</div>	
+
+		</div>
+		
+		<div class="post_right">	
+			<%= link_to post.title, post.url %></br> 
+			(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)
+		</div>
+		<div style="clear:both"></div>
 	</li>
 
 <% end %>

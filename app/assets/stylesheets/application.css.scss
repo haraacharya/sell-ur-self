@@ -15,3 +15,26 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+
+
+.post_left{
+	padding: 5px 0;
+	float: left;
+	text-align: center;
+	width: 50px;
+	margin-right: 15px;	
+}
+
+.post_right{
+	padding-top: 10px;	
+}
+
+.posts{
+	overflow: auto;
+	border-top: 1px solid $grayLighter;
+	border-bottom: 1px solid $grayLighter;
+}
+.price_up .price_down{
+	padding: 10px;	
+}
