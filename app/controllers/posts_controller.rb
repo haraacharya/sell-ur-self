@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.where(slug: params[:id]).first
-		@comments = @post.comments
 		@comment = Comment.new
 	end
 
@@ -15,7 +14,13 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		Post.create(params[:post])
-		redirect_to root_path	
+		@post = Post.create(params[:post])
+		if @post.valid?
+			flash[:notice] = "Posted successfully"
+			redirect_to root_path
+		else
+			render action: "new"
+		end
+			
 	end
 end	

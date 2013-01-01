@@ -1,9 +1,17 @@
 <h4>Submit your work here</h4>
 
-<%= form_tag posts_path do %>
-	<%= label_tag :Describe, "DESCRIBE" %>
-	<%= text_area_tag "post[title]" %>
-	<%= label_tag :url, "URL" %>
-	<%= text_field_tag "post[url]" %> <br/>
-	<%= submit_tag "Submit-your-work!" %>
+<%= form_for(@post) do |f| %>
+
+	<% if @post.errors.any? %>
+		<div class="alert alert-error">
+			<%= @post.errors.full_messages.join("<br/>").html_safe %>
+		</div>
+	<% end %>	
+	
+	
+	<%= f.label :Describe, "DESCRIBE" %>
+	<%= f.text_area :title, rows: 5 %>
+	<%= f.label :url, "URL" %>
+	<%= f.text_field :url %> <br/>
+	<%= f.submit "Submit-your-work!" %>
 <% end %>	

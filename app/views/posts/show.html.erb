@@ -3,7 +3,7 @@
 <p> <%= pluralize(@post.comments.count, "Comment") %></p>
 
 <ul>
-	<% @post.comments.each do |comment| %>
+	<% @post.comments.reload.each do |comment| %>
 		<li>
 			<%= comment.content %>		
 		</li>
@@ -13,6 +13,11 @@
 <h4>Submit a Comment!</h4>
 
 <%= form_for [@post, @comment] do |f| %>
+	<% if @comment.errors.any? %>
+		<div class="alert alert-error">
+			<%= @comment.errors.full_messages.join("").html_safe %>
+		</div>
+	<% end %>	
 	<%= f.label :content, "CONTENT" %>
 	<%= f.text_area :content, rows: 5 %>	
 	<br/>

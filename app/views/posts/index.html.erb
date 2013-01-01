@@ -22,7 +22,7 @@
 		</div>
 		
 		<div class="post_right">	
-			<%= link_to post.title, post.url %></br> 
+			<%= display_url_link(post) %></br> 
 			(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)
 		</div>
 		<div style="clear:both"></div>
